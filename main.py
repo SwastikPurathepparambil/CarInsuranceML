@@ -1,5 +1,5 @@
 import csv
-
+from xgboost import XGBClassifier
 # csv file name
 filename = "train.csv"
 
@@ -19,14 +19,19 @@ with open(filename, 'r') as csvfile:
 
 print('Features: ' + ', '.join(field for field in fields))
 
-dataset_size = 500
+dataset_size = 250
 X_train = []
 y_train = []
 for row in rows[:dataset_size]:
     X_train.append(row[:-1])
     y_train.append(row[-1])
 
-for i in range(25):
-    print(X_train[i])
-    print(y_train[i])
-    print("\n")
+# for i in range(25):
+#     print(X_train[i])
+#     print(y_train[i])
+#     print("\n")
+
+# Try 1
+model = XGBClassifier()
+model.fit(X_train, y_train)
+model.predict(X_train[3000])

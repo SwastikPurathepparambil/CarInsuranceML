@@ -1,1 +1,22 @@
 # CarInsuranceML
+
+## Introduction
+
+Who doesn't love good ol' car insurance. I am possibly embarking on a journey of driving golf carts around my college campus in a few weeks, and I need insurance on them. This project will help me get acclimated with auto insurance data. And this project will help you (the reader) in no way, shape, or form. Here's a joke I'm sure the Facebook Moms will find comical though (for legal reasons this is a joke). 
+
+Jim´s barn burned down. Julie, his wife, called the insurance company and said, "We had that barn insured for fifty thousand and I want my money."
+"Whoa there, just a minute, Julie, it doesn´t work like that. We will assess the value of the building and provide you with a new one of comparable worth." the agent replied.
+Julie, after a pause, said, "Well, in that case, I´d like to cancel the policy on my husband."
+
+I'm dying of laughter. Ha ha. Okay, now to the actual project. I will be recording all of my failures as I do this project so I can laugh at my own past mistakes and be amazed at how far I've come. 
+
+## My Choice of ML Model
+I decided to use XGBoost as my ML tool of choice because I'm working with lots of tabular data (~58000 rows just for the training set). I worry that my computer will explode though, so I'll first limit the size of my training set to anywhere from 200-5000 rows and see how long it takes to train that. Who knows, maybe the M1 Chip can cook XGBoost no problem. Btw, XGBoost (eXtreme Gradient Boosting) is an ML library that uses boosted decision trees to solve classification and regression problems. It's fast, efficient, and scaleable to large datasets.
+
+## Attempt 1: Failure
+
+XGBClassifier() does not work well with the simple import csv file. For my second attempt, I will work with the pandas dataframe setup for reading csv files.
+
+## Attempt 2: Failure
+
+Didn't add category encoders, my virutal environment really doesn't like me. Category encoders allow things like XGBClassifier() to look at categorical data in a numerical way so that it's easier to process. Cool statistics stuff. 

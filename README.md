@@ -20,3 +20,7 @@ XGBClassifier() does not work well with the simple import csv file. For my secon
 ## Attempt 2: Failure
 
 Didn't add category encoders, my virutal environment really doesn't like me. Category encoders allow things like XGBClassifier() to look at categorical data in a numerical way so that it's easier to process. Cool statistics stuff. 
+
+## Attempt 3: We're getting somewhere?
+I pretty much used a YouTube videos code here. Credit goes to the liannewriting GitHub account and Lianne and Justin YouTube account. There's a lot of things I don't really understand here. While this is fairly common when I'm learning something new, I have a split second thought of my life as a farmer in rural Malayasia, digging holes and planting trees for the well being of my family. Anyways, the accuracy of the model is ~63-66%. I'm not even sure if that's bad, so for this next attempt, I will try to understand all of the code I wrote, figure out how to tweak it to work for my dataset, and go from there.
+

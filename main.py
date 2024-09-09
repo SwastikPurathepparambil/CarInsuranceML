@@ -1,37 +1,19 @@
-import csv
+import pandas as pd
 from xgboost import XGBClassifier
+
 # csv file name
 filename = "train.csv"
 
-features = []
-rows = []
+df = pd.read_csv("train.csv")
 
-with open(filename, 'r') as csvfile:
-    csv_reader = csv.reader(csvfile)
-    
-    # get all feature names
-    fields = next(csv_reader)
-    for row in csv_reader:
-        rows.append(row)
-    
-    # get total number of rows
-    print("Total no. of rows: %d" % (csv_reader.line_num))
+train_length = 500
+td = df.head(train_length)
 
-print('Features: ' + ', '.join(field for field in fields))
+print(td["is_claim"].value_counts())
 
-dataset_size = 250
-X_train = []
-y_train = []
-for row in rows[:dataset_size]:
-    X_train.append(row[:-1])
-    y_train.append(row[-1])
+X = td.drop(columns="is_claim")
+y = td["is_claim"]
 
-# for i in range(25):
-#     print(X_train[i])
-#     print(y_train[i])
-#     print("\n")
-
-# Try 1
 model = XGBClassifier()
-model.fit(X_train, y_train)
-model.predict(X_train[3000])
+model.fit(X, y)
+model.predict(df.iloc[1000])

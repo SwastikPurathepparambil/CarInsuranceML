@@ -1,11 +1,3 @@
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# from sklearn.pipeline import Pipeline
-# from skopt import BayesSearchCV
-# from skopt.space import Real, Categorical, Integer
-# from sklearn.model_selection import train_test_split
-# import xgboost as xgb
-# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.pipeline import Pipeline
@@ -16,6 +8,7 @@ import xgboost as xgb
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_auc_score
 from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import StandardScaler
+import time
 
 # csv file name
 filename = "train.csv"
@@ -66,25 +59,36 @@ X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, te
 clf = xgb.XGBClassifier(
     objective="binary:logistic", 
     eval_metric="auc",
-
     colsample_bytree=1.0, 
     gamma=0.0,
     learning_rate=0.10292490457670343, 
     max_depth=8, 
     min_child_weight=1, 
-    n_estimators=500, 
+    n_estimators=250, 
     reg_lambda=1.0, 
     subsample=0.6,
     scale_pos_weight=(len(y_resampled) - sum(y_resampled)) / sum(y_resampled)
-    )
+)
 
 clf.fit(X_train, y_train, verbose=True, eval_set=[(X_test, y_test)])
 
-ConfusionMatrixDisplay.from_estimator(
-    clf, X_test, y_test
-)
+start_time = time.time() 
+ 
+print(clf.predict(X_test))
+ 
+end_time = time.time() 
+execution_time = end_time - start_time 
+print(f"Execution time: {execution_time} seconds") 
 
-plt.show()
+# ConfusionMatrixDisplay.from_estimator(
+#     clf, X_test, y_test
+# )
+
+# plt.show()
+
+
+
+
 
 
 
